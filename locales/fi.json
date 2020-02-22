@@ -1,0 +1,5 @@
+{
+    "error_calc"    :   "Laskentavirheet: ",
+    "no_input"      :   "Syöttöparametria ei ole käytettävissä.",
+    "invalid_input" :   "Tuloparametrin arvo on virheellinen."
+}

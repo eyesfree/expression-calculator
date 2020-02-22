@@ -6,7 +6,7 @@ var i18n = require('i18n');
 
 i18n.configure({
   // setup some locales - other locales default to en silently
-  locales: ['en', 'bg', 'de'],
+  locales: ['en', 'bg', 'de', 'fi'],
 
   // sets a custom cookie name to parse locale settings from
   cookie: 'language',
@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/calculate', (req,res) => {
-    var lang = req.acceptsLanguages('de', 'en', 'bg', 'fn');
+    var lang = req.acceptsLanguages('de', 'en', 'bg', 'fi');
     if (lang) {
         console.log('Spotted supported language:' + lang);
     }
@@ -60,9 +60,11 @@ function calculateBase64(userInput) {
             return result;       
         }
         catch (err) {
+            console.log('error by the calculation: ' + err);
             return err;
         }
     } else {
+        console.log(res.__('invalid_input'));
         return res.__('invalid_input');
     }
 }
