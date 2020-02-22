@@ -7,18 +7,12 @@ const app = require('../app.js');
 const request = supertest(app);
 
 describe('Tests app', function() {
-  it('verifies get', function(done) {
-    request.get('/').expect(200).end(function(err, result) {
-        test.string(result.body.Output).contains('Hello');
-        test.value(result).hasHeader('content-type', 'application/json; charset=utf-8');
+
+  it('verify calculate', function(done) {
+    request.get('/calculate?input=MTEgKyAzICogMTAgLTQ=').expect(200).end(function(err, result) {
+        test.string(result.body.result).contains('37');
         done(err);
     });
   });
-  it('verifies post', function(done) {
-    request.post('/').expect(200).end(function(err, result) {
-        test.string(result.body.Output).contains('Hello');
-        test.value(result).hasHeader('content-type', 'application/json; charset=utf-8');
-        done(err);
-    });
-  });
+
 });
