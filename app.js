@@ -67,7 +67,5 @@ function calculateBase64(userInput) {
     }
 }
 
-
-
 // Export your Express configuration so that it can be consumed by the Lambda handler
 module.exports = app

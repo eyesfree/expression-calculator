@@ -17,6 +17,6 @@
         "supertest": "3.0.0"
     },
     "scripts": {
-        "test": "mocha --recursive tests"
+        "test": "mocha --recursive tests --exit"
     }
 }
