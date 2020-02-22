@@ -1,5 +1,5 @@
 {
     "error_calc"    :   "Calculation error: ",
-    "no_input"      :   "No input parameter set.",
-    "invalid_input" :   "Invalid expression passed as input."
+    "no_input"      :   "No query parameter set.",
+    "invalid_input" :   "Invalid expression passed as query."
 }

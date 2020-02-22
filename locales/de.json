@@ -1,5 +1,5 @@
 {
     "error_calc"    :   "Fehler beim rechnen: ",
-    "no_input"      :   "Kein input Parameter vorhanden",
-    "invalid_input" :   "Ungültiger Wert für input Parameter."
+    "no_input"      :   "Kein query Parameter vorhanden",
+    "invalid_input" :   "Ungültiger Wert für query Parameter."
 }

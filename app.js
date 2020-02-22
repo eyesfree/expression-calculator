@@ -32,8 +32,8 @@ app.get('/calculate', (req,res) => {
         console.log('Spotted supported language:' + lang);
     }
 
-    if(req.query.input) {
-        var result = calculateBase64(req.query.input);
+    if(req.query.query) {
+        var result = calculateBase64(req.query.query);
         if(isNaN(result)) {
             res.send({ error: 'true', message: res.__('error_calc') + result });
         } else {
