@@ -9,21 +9,21 @@ const request = supertest(app);
 describe('Tests app', function() {
 
   it('verify calculate', function(done) {
-    request.get('/calculate?query=MTEgKyAzICogMTAgLTQ=').expect(200).end(function(err, result) {
+    request.get('/calculus?query=MTEgKyAzICogMTAgLTQ=').expect(200).end(function(err, result) {
         test.object(result.body).contains({error: 'false', result: '37'});
         done(err);
     });
   });
 
   it('negative calculate', function(done) {
-    request.get('/calculate?query=NSArICgxMjAqNDY3KjIgLTU=').expect(200).end(function(err, result) {
+    request.get('/calculus?query=NSArICgxMjAqNDY3KjIgLTU=').expect(200).end(function(err, result) {
         test.string(result.body.message).contains('SyntaxError: Parenthesis ) expected (char 18)');
         done(err);
     });
   });
 
   it('no input parameter', function(done) {
-    request.get('/calculate').expect(200).end(function(err, result) {
+    request.get('/calculus').expect(200).end(function(err, result) {
         test.string(result.body.message).contains('No query parameter');
         done(err);
     });

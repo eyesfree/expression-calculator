@@ -19,7 +19,7 @@ i18n.configure({
 // i18n init parses req for language headers, cookies, etc.
 app.use(i18n.init);
 
-app.get('/calculate', (req,res) => {
+app.get('/calculus', (req,res) => {
     var lang = req.acceptsLanguages('de', 'en', 'bg', 'fi');
     if (lang) {
         console.log('Spotted supported language:' + lang);

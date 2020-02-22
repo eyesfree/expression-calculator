@@ -1,5 +1,6 @@
 # expression-calculator
 Web Service performing a simple equation calculation
+==============================================
 
 To see the web service in action please use: 
 https://g8fd2787c5.execute-api.us-east-2.amazonaws.com/Prod/calculate?query=[input]
@@ -28,17 +29,11 @@ Dependencies explanation:
     "i18n": "light-weight i18n translation module"
 }
 
-------------------------------------------------------------
-Welcome to the AWS CodeStar sample web service
-==============================================
 
-This sample code helps get you started with a simple Express web service
-deployed by AWS CloudFormation to AWS Lambda and Amazon API Gateway.
-
-What's Here
+Files
 -----------
 
-This sample includes:
+This project includes:
 
 * README.md - this file
 * buildspec.yml - this file is used by AWS CodeBuild to package your
@@ -50,6 +45,7 @@ This sample includes:
   Gateway.
 * tests/ - this directory contains unit tests for your application
 * template-configuration.json - this file contains the project ARN with placeholders used for tagging resources with the project ID
+* locales - i18n messages files
 
 Getting Started
 ---------------
