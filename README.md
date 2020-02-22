@@ -1,9 +1,21 @@
-# string-calculator
-REST Endpoint accepting a string simple equation calculation
+# expression-calculator
+Web Service performing a simple equation calculation
+
+To see the web service in action please use: 
+https://g8fd2787c5.execute-api.us-east-2.amazonaws.com/Prod/calculate?query=[input]
+
+The input shall be base64 encoded utf-8 string. For example:
+
+Original query: 2 * (23/(33))- 23 * (23)
+With encoding: MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk
+
 
 To start:
 npm install
-node server.js
+node app.js
+
+To test:
+npm test
 
 Dependencies explanation:
 {

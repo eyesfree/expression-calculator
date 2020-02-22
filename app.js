@@ -19,13 +19,6 @@ i18n.configure({
 // i18n init parses req for language headers, cookies, etc.
 app.use(i18n.init);
 
-
-app.get('/', function(req, res) {
-  res.send({
-    "Output": "Hello World!"
-  });
-});
-
 app.get('/calculate', (req,res) => {
     var lang = req.acceptsLanguages('de', 'en', 'bg', 'fi');
     if (lang) {
@@ -49,7 +42,7 @@ console.log(`String calculator running at ${port}`);
 
 function calculateBase64(userInput) {
     console.log('Processing: ' + userInput);
-    var input = new Buffer(userInput, 'base64');
+    var input = Buffer.from(userInput, 'base64');
     var decoded = input.toString();
     console.log('Decoded exression: ' + decoded);
 

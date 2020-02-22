@@ -41,11 +41,7 @@ Resources:
         GetEvent:
           Type: Api
           Properties:
-            Path: /
-            Method: get
-          Type: Api
-          Properties:
-            Path: /calculate
+            Path: /query
             Method: get
   LambdaExecutionRole:
     Description: Creating service role in IAM for AWS Lambda
