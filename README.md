@@ -18,14 +18,20 @@ node app.js
 To test:
 npm test
 
+Deployment:
+The app is deployed as serverless web-service lambda expression on AWS.
+It was created with CodeStar, it's deployment is configured by the template.yml file. 
+The source code build is automatically triggert on push on the master branch. If it succeeds then an artifact is deployed on the Amazon S3 Bucket. 
+
+
 Dependencies explanation:
 {
     "express": "to handle the REST API",
     "mathjs-expression-parser": "lightweight version of mathjs to calculate the mathematical expression",
     "request": "to test the API with mocha",
     "mocha" : "testing framework",
-    "express-session": "use session to store user language option",
-    "cookie-parser": "to edit cookie object in user session",
+    "helmet": "security shield for different attacks",
+    "aws-serverless-express": "integration with aws",
     "i18n": "light-weight i18n translation module"
 }
 

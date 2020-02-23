@@ -10,42 +10,56 @@ i18n.configure({
   cookie: 'language',
   directory: __dirname + '/locales'
 });
+app.use(i18n.init);
 
 app.disable('x-powered-by');
 app.use(helmet());
-app.use(i18n.init);
 
 app.get('/calculus', (req,res) => {
 
     if(req.query.query) {
-        var result = calculateBase64(req.query.query);
+        var decoded = decodeBase64(req.query.query);
+        var result = calculate(decoded);
         if(isNaN(result)) {
-            res.send({ error: 'true', message: res.__('error_calc') + result });
+            res.status(400).send({ error: 'true', message: res.__('error_calc') + result });
         } else {
             res.send({ error: 'false', result: `${result}` });  
         }     
     } else {
-        res.send({ error: 'true', message: res.__('no_input') });
+        res.status(400).send({ error: 'true', message: res.__('no_input') });
     }
 });
 
 app.listen(port);
 
-function calculateBase64(userInput) {
+/**
+ * Decodes a base64 string
+ * @param {string} userInput a base64 decoded utf-8 string
+ */
+function decodeBase64(userInput) {
     var input = Buffer.from(userInput, 'base64');
-    var decoded = input.toString();
+    if (input) {
+        return input.toString();
+    }
+}
 
-    if(decoded) {
+/**
+ * Calculates a mathematical expression if a syntactically valid input is given, otherwise returns an error. 
+ * @param {string} input mathematical expression for example 2+3*4-(5*3)
+ */
+function calculate(input) {
+    if (input) {
         try {
-            var result = math.eval(decoded);
+            var result = math.eval(input);
             return result;       
         }
         catch (err) {
             return err;
         }
     } else {
-        return res.__('invalid_input');
+        return i18n.__('invalid_input');
     }
 }
 
+// used by aws lambda
 module.exports = app
