@@ -9,10 +9,10 @@ describe('Tests app', function() {
 
   it('verify calculate', function() {
     return supertest(app)
-              .get('/calculus?query=MTEgKyAzICogMTAgLTQ=')
+              .get('/calculus?query=NSArIDIgKiAoNCAtIDMp')
               .expect(200)
               .expect('Content-Type',/json/)
-              .expect({error: 'false', result: '37'});
+              .expect({error: 'false', result: '7'});
     });
 
   it('verify equation with parenthesis', function() {
