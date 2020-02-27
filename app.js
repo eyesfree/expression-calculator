@@ -5,6 +5,8 @@ var helmet = require('helmet');
 var port = process.env.PORT || 3939;  
 var i18n = require('i18n');
 
+var pino = require('express-pino-logger')()
+
 i18n.configure({
   locales: ['en', 'bg', 'de', 'fi'],
   cookie: 'language',
@@ -14,23 +16,28 @@ app.use(i18n.init);
 
 app.disable('x-powered-by');
 app.use(helmet());
+app.use(pino)
 
 app.get('/calculus', (req,res) => {
-
+    req.log.info("Calculation started");
     if(req.query.query) {
         var decoded = decodeBase64(req.query.query);
         var result = calculate(decoded);
-        if(isNaN(result)) {
+        if(isNaN(result)) {          
             res.status(400).send({ error: 'true', message: res.__('error_calc') + result });
+            res.log.info({ error: 'true', message: res.__('error_calc') + result });
         } else {
             res.send({ error: 'false', result: `${result}` });  
+            res.log.info({ error: 'false', result: `${result}` });
         }     
-    } else {
+    } else {       
         res.status(400).send({ error: 'true', message: res.__('no_input') });
+        res.log.info({ error: 'true', message: res.__('no_input') });
     }
 });
 
 app.listen(port);
+
 
 /**
  * Decodes a base64 string

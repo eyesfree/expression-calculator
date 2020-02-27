@@ -2,3 +2,4 @@
 node_modules
 LICENCE.md
 package-lock.json
+.vscode
